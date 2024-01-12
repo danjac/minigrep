@@ -68,6 +68,9 @@ pub struct Config {
 
 impl Config {
     pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        // skip name
+        args.next();
+
         let query = match args.next() {
             Some(arg) => arg,
             None => return Err("Didn't get a query string"),
